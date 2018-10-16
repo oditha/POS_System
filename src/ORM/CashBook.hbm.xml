@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 26, 2018 12:50:47 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.CashBook" table="CashBook" catalog="jrtraders" optimistic-lock="version">
+        <id name="idCashBook" type="java.lang.Integer">
+            <column name="idCashBook" />
+            <generator class="identity" />
+        </id>
+        <property name="credit" type="java.lang.Double">
+            <column name="Credit" precision="22" scale="0" />
+        </property>
+        <property name="debit" type="java.lang.Double">
+            <column name="Debit" precision="22" scale="0" />
+        </property>
+        <property name="cbdate" type="string">
+            <column name="CBDate" length="10" />
+        </property>
+        <property name="descriotion" type="string">
+            <column name="Descriotion" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

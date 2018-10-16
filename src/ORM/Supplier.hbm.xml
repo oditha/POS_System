@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 26, 2018 12:50:47 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.Supplier" table="Supplier" catalog="jrtraders" optimistic-lock="version">
+        <id name="idSupplier" type="java.lang.Integer">
+            <column name="idSupplier" />
+            <generator class="identity" />
+        </id>
+        <property name="supplierCode" type="string">
+            <column name="SupplierCode" length="45" />
+        </property>
+        <property name="supplierName" type="string">
+            <column name="SupplierName" length="45" />
+        </property>
+        <property name="supplierAddress1" type="string">
+            <column name="SupplierAddress1" length="45" />
+        </property>
+        <property name="supplierAddress2" type="string">
+            <column name="SupplierAddress2" length="45" />
+        </property>
+        <property name="supplierCity" type="string">
+            <column name="SupplierCity" length="45" />
+        </property>
+        <property name="supplierContactNo1" type="string">
+            <column name="SupplierContactNo1" length="45" />
+        </property>
+        <property name="supplierContactNo2" type="string">
+            <column name="SupplierContactNo2" length="45" />
+        </property>
+        <property name="supplierEmail" type="string">
+            <column name="supplierEmail" length="45" />
+        </property>
+        <property name="isActive" type="string">
+            <column name="isActive" length="45" />
+        </property>
+        <set name="supplierInvoices" table="SupplierInvoice" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idSupplier" not-null="true" />
+            </key>
+            <one-to-many class="ORM.SupplierInvoice" />
+        </set>
+        <set name="supplierInvoicePaymentses" table="SupplierInvoicePayments" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idSupplier" not-null="true" />
+            </key>
+            <one-to-many class="ORM.SupplierInvoicePayments" />
+        </set>
+        <set name="supplierReturns" table="SupplierReturn" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idSupplier" not-null="true" />
+            </key>
+            <one-to-many class="ORM.SupplierReturn" />
+        </set>
+        <set name="grns" table="GRN" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idSupplier" not-null="true" />
+            </key>
+            <one-to-many class="ORM.Grn" />
+        </set>
+        <set name="grnpaymentses" table="GRNPayments" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idSupplier" not-null="true" />
+            </key>
+            <one-to-many class="ORM.Grnpayments" />
+        </set>
+        <set name="itemSereals" table="ItemSereal" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idSupplier" not-null="true" />
+            </key>
+            <one-to-many class="ORM.ItemSereal" />
+        </set>
+        <set name="supplierInvoiceReturnHasSuppliers" table="SupplierInvoiceReturn_has_Supplier" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idSupplier" not-null="true" />
+            </key>
+            <one-to-many class="ORM.SupplierInvoiceReturnHasSupplier" />
+        </set>
+    </class>
+</hibernate-mapping>

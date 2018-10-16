@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CusPaymentRecipt" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="f7f55e77-926e-43cb-a70e-b8ef1d20f020">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MYSQL Data Adapter "/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="IdInvPayment" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+SupplierInvoice.InvoiceNo,
+SupplierInvoicePayments.PaymentDate,
+SupplierInvoicePayments.Amount,
+Supplier.SupplierName
+FROM
+SupplierInvoice
+INNER JOIN SupplierInvoicePayments ON SupplierInvoicePayments.idInvoice = SupplierInvoice.idInvoice
+INNER JOIN Supplier ON SupplierInvoice.idSupplier = Supplier.idSupplier AND SupplierInvoicePayments.idSupplier = Supplier.idSupplier
+WHERE
+SupplierInvoicePayments.idInvoicePayment =  $P{IdInvPayment}]]>
+	</queryString>
+	<field name="InvoiceNo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="InvoiceNo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoice"/>
+	</field>
+	<field name="PaymentDate" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="PaymentDate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoicePayments"/>
+	</field>
+	<field name="Amount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="Amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoicePayments"/>
+	</field>
+	<field name="SupplierName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SupplierName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Supplier"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="116" splitType="Stretch">
+			<line>
+				<reportElement x="2" y="73" width="549" height="1" uuid="41f366c4-b003-4a54-a84f-bf700073bd2a"/>
+			</line>
+			<staticText>
+				<reportElement x="1" y="50" width="548" height="18" uuid="7160da06-ddee-47d7-88af-3285cf1e51d9"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[info.bitwincomputers@gmail.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="39" width="548" height="20" uuid="414e487d-4844-48f3-8ba0-e07eb1cc00cd"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[No 43, Ground Floor, MC Plaza, Kurunagala]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="22" width="548" height="20" uuid="4be4c720-b197-4a40-b24b-1d2ec5f593b6"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[071 666 88 26 | 071 968 86 11]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="2" width="548" height="20" uuid="d8a05bef-10c6-4791-801e-8bf88f7d5ff2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bahamas" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bit Win Computers]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="137" y="-41" width="280" height="20" uuid="e6c948d4-a46a-445e-8f7a-4544a8ed6386"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment Recipt]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="-19" width="280" height="15" uuid="2cfb2eca-8ef8-47cc-8762-4e4494c7488d"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Bill To:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="-15" width="78" height="15" uuid="839f4350-1a8a-483a-bd3e-513bc5559cdc"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Payment Date]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="270" y="-4" width="280" height="20" uuid="31899995-641b-43a9-b101-6294b24c3cf2"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{SupplierName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="-15" width="100" height="15" uuid="9502004a-2de9-4263-a8e8-bcc8e14dd68d"/>
+				<textFieldExpression><![CDATA[$F{PaymentDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<line>
+				<reportElement x="2" y="-6" width="548" height="1" uuid="353980f6-414b-47a4-a70b-c4a6ea65e3c4"/>
+			</line>
+			<staticText>
+				<reportElement x="277" y="4" width="278" height="15" uuid="1632be60-bebb-478f-91ca-e2ae13940af9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2df03747-8cfb-4d8e-bcce-c975781fddc5"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Amount Paid]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="4" width="277" height="15" uuid="6f01b8a0-c9f1-4271-b14c-de6b2cf90418">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b4df7c03-f4ce-4a77-8390-159005e4959b"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="19" width="548" height="1" uuid="f3ac0c2f-0247-4003-aee1-d4195f1e93a5"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="43" splitType="Stretch">
+			<staticText>
+				<reportElement x="30" y="0" width="70" height="30" uuid="dfe96071-8fd9-4a18-91dd-ff91dbe70bcf"/>
+				<text><![CDATA[Payment For]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="30" uuid="a2578b76-1504-439a-8d1b-b78580603537">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="694d45f2-7e5f-47a1-b376-f38c4578d421"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{InvoiceNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="363" y="0" width="192" height="30" uuid="e584880e-d10f-48dc-bac3-b692dfce79fa">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5b2b1754-b73e-4cdb-9718-4c4ad5da3cfe"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Amount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="93" splitType="Stretch">
+			<line>
+				<reportElement x="450" y="24" width="100" height="1" uuid="6ec46324-46ae-4571-8fc1-89cf65ec5b42"/>
+			</line>
+			<line>
+				<reportElement x="450" y="26" width="100" height="1" uuid="f0b56ccb-fd6a-4309-80d0-e86fa9cfa85b"/>
+			</line>
+			<line>
+				<reportElement x="450" y="3" width="100" height="1" uuid="bb777a0b-372d-457d-9948-0727dc36e3a2"/>
+			</line>
+			<staticText>
+				<reportElement x="371" y="6" width="80" height="15" uuid="b1594eda-6925-4c07-a931-5385088c7b91"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Net Total]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="455" y="6" width="100" height="15" uuid="4a026a15-c727-4c8d-8752-e6b31675a03c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Amount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="30" y="54" width="100" height="30" uuid="e3c0936f-365a-4765-8dd2-1dbaa9cfb093"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[………………………...
+Authorized by ]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="48" splitType="Stretch">
+			<line>
+				<reportElement x="2" y="-9" width="547" height="5" uuid="7c0bd667-26d8-4c6c-bf98-cfe1479c334c"/>
+			</line>
+			<staticText>
+				<reportElement x="6" y="25" width="544" height="18" uuid="6f1fbfed-36b9-416b-8e59-e572f1b22d57"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[POS System Powerd by Miracle Solutions - 0771981680]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="4" width="544" height="18" uuid="6251acc8-af00-40c5-bb09-4e2b5eb37d48"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Thanks for your business]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

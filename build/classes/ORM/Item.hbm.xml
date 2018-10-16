@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 26, 2018 12:50:47 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.Item" table="Item" catalog="jrtraders" optimistic-lock="version">
+        <id name="idItem" type="java.lang.Integer">
+            <column name="idItem" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="brands" class="ORM.Brands" fetch="select">
+            <column name="idBrands" not-null="true" />
+        </many-to-one>
+        <many-to-one name="catogory" class="ORM.Catogory" fetch="select">
+            <column name="idCatogory" not-null="true" />
+        </many-to-one>
+        <property name="itemCode" type="string">
+            <column name="ItemCode" length="45" />
+        </property>
+        <property name="iitemName" type="string">
+            <column name="iItemName" length="45" />
+        </property>
+        <property name="isActive" type="string">
+            <column name="isActive" length="45" />
+        </property>
+        <property name="descriotion" type="string">
+            <column name="Descriotion" length="16777215" />
+        </property>
+        <property name="unit" type="string">
+            <column name="Unit" />
+        </property>
+        <set name="invoiceItems" table="InvoiceItem" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idItem" not-null="true" />
+            </key>
+            <one-to-many class="ORM.InvoiceItem" />
+        </set>
+        <set name="stocks" table="Stock" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idItem" not-null="true" />
+            </key>
+            <one-to-many class="ORM.Stock" />
+        </set>
+        <set name="itemPriceses" table="ItemPrices" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idItem" not-null="true" />
+            </key>
+            <one-to-many class="ORM.ItemPrices" />
+        </set>
+        <set name="itemSereals" table="ItemSereal" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idItem" not-null="true" />
+            </key>
+            <one-to-many class="ORM.ItemSereal" />
+        </set>
+        <set name="grnitems" table="GRNItem" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idItem" not-null="true" />
+            </key>
+            <one-to-many class="ORM.Grnitem" />
+        </set>
+        <set name="supplierInvoiceItems" table="SupplierInvoiceItem" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idItem" not-null="true" />
+            </key>
+            <one-to-many class="ORM.SupplierInvoiceItem" />
+        </set>
+    </class>
+</hibernate-mapping>

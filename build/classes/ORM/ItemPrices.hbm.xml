@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 26, 2018 12:50:47 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.ItemPrices" table="ItemPrices" catalog="jrtraders" optimistic-lock="version">
+        <id name="idItemPrices" type="java.lang.Integer">
+            <column name="idItemPrices" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="item" class="ORM.Item" fetch="select">
+            <column name="idItem" not-null="true" />
+        </many-to-one>
+        <property name="grossPrice" type="java.lang.Double">
+            <column name="GrossPrice" precision="22" scale="0" />
+        </property>
+        <property name="nettPrice" type="java.lang.Double">
+            <column name="NettPrice" precision="22" scale="0" />
+        </property>
+        <property name="minPrice" type="java.lang.Double">
+            <column name="minPrice" precision="22" scale="0" />
+        </property>
+        <property name="supWarrenty" type="string">
+            <column name="SupWarrenty" length="45" />
+        </property>
+        <property name="selelrWarrenty" type="string">
+            <column name="SelelrWarrenty" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

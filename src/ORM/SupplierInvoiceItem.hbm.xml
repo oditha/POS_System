@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 26, 2018 12:50:47 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.SupplierInvoiceItem" table="SupplierInvoiceItem" catalog="jrtraders" optimistic-lock="version">
+        <id name="idInvoiceItem" type="java.lang.Integer">
+            <column name="idInvoiceItem" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="item" class="ORM.Item" fetch="select">
+            <column name="idItem" not-null="true" />
+        </many-to-one>
+        <many-to-one name="supplierInvoice" class="ORM.SupplierInvoice" fetch="select">
+            <column name="idInvoice" not-null="true" />
+        </many-to-one>
+        <property name="qty" type="java.lang.Integer">
+            <column name="QTY" />
+        </property>
+        <property name="unitPrice" type="java.lang.Double">
+            <column name="UnitPrice" precision="22" scale="0" />
+        </property>
+        <property name="discount" type="java.lang.Double">
+            <column name="Discount" precision="22" scale="0" />
+        </property>
+        <property name="nettTotalItm" type="java.lang.Double">
+            <column name="NettTotalITM" precision="22" scale="0" />
+        </property>
+        <property name="isActive" type="string">
+            <column name="isActive" length="45" />
+        </property>
+        <property name="warranry" type="string">
+            <column name="Warranry" length="45" />
+        </property>
+        <set name="supplierInvoiceItemHasItemSereals" table="SupplierInvoiceItem_has_ItemSereal" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInvoiceItem" not-null="true" />
+            </key>
+            <one-to-many class="ORM.SupplierInvoiceItemHasItemSereal" />
+        </set>
+        <set name="supplierInvoiceReturns" table="SupplierInvoiceReturn" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInvoiceItem" not-null="true" />
+            </key>
+            <one-to-many class="ORM.SupplierInvoiceReturn" />
+        </set>
+    </class>
+</hibernate-mapping>

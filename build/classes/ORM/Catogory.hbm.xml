@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 26, 2018 12:50:47 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.Catogory" table="Catogory" catalog="jrtraders" optimistic-lock="version">
+        <id name="idCatogory" type="java.lang.Integer">
+            <column name="idCatogory" />
+            <generator class="identity" />
+        </id>
+        <property name="catogoryCode" type="string">
+            <column name="CatogoryCode" length="45" />
+        </property>
+        <property name="catogoryName" type="string">
+            <column name="CatogoryName" length="45" />
+        </property>
+        <property name="isActive" type="string">
+            <column name="isActive" length="45" />
+        </property>
+        <set name="items" table="Item" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCatogory" not-null="true" />
+            </key>
+            <one-to-many class="ORM.Item" />
+        </set>
+    </class>
+</hibernate-mapping>

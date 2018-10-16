@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 26, 2018 12:50:47 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.SupplierInvoicePayments" table="SupplierInvoicePayments" catalog="jrtraders" optimistic-lock="version">
+        <id name="idInvoicePayment" type="java.lang.Integer">
+            <column name="idInvoicePayment" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="supplier" class="ORM.Supplier" fetch="select">
+            <column name="idSupplier" not-null="true" />
+        </many-to-one>
+        <many-to-one name="supplierInvoice" class="ORM.SupplierInvoice" fetch="select">
+            <column name="idInvoice" not-null="true" />
+        </many-to-one>
+        <property name="paymentDate" type="string">
+            <column name="PaymentDate" length="10" />
+        </property>
+        <property name="amount" type="java.lang.Double">
+            <column name="Amount" precision="22" scale="0" />
+        </property>
+        <property name="paymentType" type="string">
+            <column name="PaymentType" length="45" />
+        </property>
+        <property name="isActive" type="string">
+            <column name="isActive" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

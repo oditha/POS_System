@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CusInvoice" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4e2a3711-0f59-4eb3-87bd-6ff430758bde">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MYSQL Data Adapter "/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="InvoiceNO" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+	SupplierInvoice.*, SupplierInvoiceItem.*, SupplierInvoiceItem_has_ItemSereal.*, Item.*, ItemSereal.*, Supplier.*
+FROM
+	Supplier
+INNER JOIN SupplierInvoice ON Supplier.idSupplier = SupplierInvoice.idSupplier
+INNER JOIN SupplierInvoiceItem ON SupplierInvoice.idInvoice = SupplierInvoiceItem.idInvoice
+INNER JOIN SupplierInvoiceItem_has_ItemSereal ON SupplierInvoiceItem_has_ItemSereal.idInvoiceItem = SupplierInvoiceItem.idInvoiceItem
+INNER JOIN ItemSereal ON ItemSereal.idItemSereal = SupplierInvoiceItem_has_ItemSereal.idItemSereal
+INNER JOIN Item ON Item.idItem = ItemSereal.idItem
+WHERE SupplierInvoice.InvoiceNo =  $P{InvoiceNO}
+GROUP BY
+Item.iItemName]]>
+	</queryString>
+	<field name="idInvoice" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="idInvoice"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoice"/>
+	</field>
+	<field name="InvoiceNo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="InvoiceNo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoice"/>
+	</field>
+	<field name="InvoiceDate" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="InvoiceDate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoice"/>
+	</field>
+	<field name="SubTotal" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="SubTotal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoice"/>
+	</field>
+	<field name="Discount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="Discount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoice"/>
+	</field>
+	<field name="NettTotal" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="NettTotal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoice"/>
+	</field>
+	<field name="isActive" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="isActive"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoice"/>
+	</field>
+	<field name="CreatedBy" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CreatedBy"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoice"/>
+	</field>
+	<field name="idSupplier" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="idSupplier"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoice"/>
+	</field>
+	<field name="idInvoiceItem" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="idInvoiceItem"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoiceItem"/>
+	</field>
+	<field name="idItem" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="idItem"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoiceItem"/>
+	</field>
+	<field name="QTY" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="QTY"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoiceItem"/>
+	</field>
+	<field name="UnitPrice" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="UnitPrice"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoiceItem"/>
+	</field>
+	<field name="COLUMN_14" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="Discount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoiceItem"/>
+	</field>
+	<field name="NettTotalITM" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="NettTotalITM"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoiceItem"/>
+	</field>
+	<field name="COLUMN_16" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="isActive"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoiceItem"/>
+	</field>
+	<field name="COLUMN_17" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="idInvoice"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoiceItem"/>
+	</field>
+	<field name="Warranry" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Warranry"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoiceItem"/>
+	</field>
+	<field name="IdRecord" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="IdRecord"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoiceItem_has_ItemSereal"/>
+	</field>
+	<field name="COLUMN_20" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="idInvoiceItem"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoiceItem_has_ItemSereal"/>
+	</field>
+	<field name="idItemSereal" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="idItemSereal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SupplierInvoiceItem_has_ItemSereal"/>
+	</field>
+	<field name="COLUMN_22" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="idItem"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Item"/>
+	</field>
+	<field name="ItemCode" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ItemCode"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Item"/>
+	</field>
+	<field name="iItemName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="iItemName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Item"/>
+	</field>
+	<field name="idCatogory" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="idCatogory"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Item"/>
+	</field>
+	<field name="idBrands" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="idBrands"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Item"/>
+	</field>
+	<field name="COLUMN_27" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="isActive"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Item"/>
+	</field>
+	<field name="Descriotion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Descriotion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Item"/>
+	</field>
+	<field name="COLUMN_29" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="idItemSereal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ItemSereal"/>
+	</field>
+	<field name="SerealNo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SerealNo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ItemSereal"/>
+	</field>
+	<field name="COLUMN_31" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="isActive"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ItemSereal"/>
+	</field>
+	<field name="COLUMN_32" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="idSupplier"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ItemSereal"/>
+	</field>
+	<field name="idGRN" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="idGRN"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ItemSereal"/>
+	</field>
+	<field name="COLUMN_34" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="idItem"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ItemSereal"/>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ItemSereal"/>
+	</field>
+	<field name="COLUMN_36" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="idSupplier"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Supplier"/>
+	</field>
+	<field name="SupplierCode" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SupplierCode"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Supplier"/>
+	</field>
+	<field name="SupplierName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SupplierName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Supplier"/>
+	</field>
+	<field name="SupplierAddress1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SupplierAddress1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Supplier"/>
+	</field>
+	<field name="SupplierAddress2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SupplierAddress2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Supplier"/>
+	</field>
+	<field name="SupplierCity" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SupplierCity"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Supplier"/>
+	</field>
+	<field name="SupplierContactNo1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SupplierContactNo1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Supplier"/>
+	</field>
+	<field name="SupplierContactNo2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SupplierContactNo2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Supplier"/>
+	</field>
+	<field name="supplierEmail" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="supplierEmail"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Supplier"/>
+	</field>
+	<field name="COLUMN_45" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="isActive"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Supplier"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="85" splitType="Stretch">
+			<line>
+				<reportElement x="3" y="78" width="550" height="1" uuid="b9b52df2-21be-4e34-9a54-0c14db107367"/>
+			</line>
+			<staticText>
+				<reportElement x="5" y="57" width="545" height="20" uuid="c8ea5ea8-28f0-45b2-8d4d-b5689ea277e4"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[info.bitwincomputers@gmail.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="43" width="545" height="20" uuid="86acce51-97dd-414f-b6c0-2dabbb7d03f2"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[No 43, Ground Floor, MC Plaza, Kurunagala]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="ElementGroupHeight" x="5" y="21" width="545" height="20" uuid="f10bca99-dbca-44b4-863e-114587fecead"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[071 661 88 26 | 076 968 86 11]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="1" width="545" height="20" uuid="682a075b-6dfd-4490-af02-a991d12eedf2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bahamas" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BitWin Computers]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="137" y="3" width="280" height="20" uuid="f0f0fade-ce38-4bc3-8d46-9b3ebfb3be05"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sales Invoice]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="26" width="280" height="15" uuid="da55180b-1b64-42f2-9781-f929466cfcfe"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Bill To: MR/MS/MRS/REV]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="22" y="43" width="280" height="30" uuid="759a9a41-46b8-4e8e-8898-6594f45e6539"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$F{SupplierName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="369" y="25" width="80" height="15" uuid="d39d36f3-33ac-4da3-87c6-0a27166aa747"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Invoice No#]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="449" y="25" width="100" height="15" uuid="9b786c5b-d31e-4987-af19-30a28dd2091b"/>
+				<textFieldExpression><![CDATA[$F{InvoiceNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="369" y="40" width="80" height="15" uuid="fec42b69-f8b9-4333-b636-ebd5e8adcecb"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="449" y="40" width="100" height="15" uuid="dce23be3-bdf3-4b8c-9b1b-fe51e7f31d36"/>
+				<textFieldExpression><![CDATA[$F{InvoiceDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="449" y="57" width="100" height="13" uuid="5420aeb1-d793-4f41-92c9-db3b8215283c"/>
+				<textFieldExpression><![CDATA[$F{CreatedBy}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="369" y="55" width="80" height="15" uuid="27246239-c533-4706-8887-6cdf59f91a8b"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Create By]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<line>
+				<reportElement x="3" y="20" width="550" height="1" uuid="7a3b5bf5-91ad-4740-b337-e0024f1f7867"/>
+			</line>
+			<line>
+				<reportElement x="2" y="-7" width="550" height="1" uuid="d495fc60-bb96-48f1-a1b5-434fb49e6588"/>
+			</line>
+			<staticText>
+				<reportElement x="477" y="3" width="70" height="12" uuid="2a731c54-a8a4-45cb-b57c-3c1fa5320609">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c1b49324-5d12-48e2-b632-e840cd1cf8da"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Nett Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="444" y="3" width="30" height="12" uuid="348136cb-8273-43e8-9d23-dc6045bae875">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2636dfb4-38b1-404e-8ac3-2cee0e6d307b"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="3" width="70" height="13" uuid="a0621831-3eb8-4840-9726-d7a9b40acb08">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d41fe3c2-2d36-4dcd-9781-f1851e6bbefd"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Unit Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="3" width="80" height="12" uuid="bda33626-a299-4bd9-b794-f994d2864735">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d0fd905e-1794-49db-9ac7-277d3d3aef51"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Warranty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="3" width="280" height="12" uuid="0670185a-5b88-4b06-b423-432a58297be0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="98e97787-03c3-4890-a7b7-1ca486271d94"/>
+				</reportElement>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Item Name]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="39" splitType="Stretch">
+			<textField>
+				<reportElement x="7" y="0" width="280" height="18" uuid="8fa0b5ad-48ee-477d-bcce-ab4342669fa8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="98e97787-03c3-4890-a7b7-1ca486271d94"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{iItemName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="1" width="70" height="18" uuid="a2567360-9662-4527-90c3-75ffd160a00b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d41fe3c2-2d36-4dcd-9781-f1851e6bbefd"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{UnitPrice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="0" width="30" height="18" uuid="278d3734-2feb-4edd-b10c-64914b5e4d7c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2636dfb4-38b1-404e-8ac3-2cee0e6d307b"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{QTY}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="477" y="0" width="72" height="18" uuid="78d74243-fff3-47d5-a274-94f2f811441f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c1b49324-5d12-48e2-b632-e840cd1cf8da"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NettTotalITM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="7" y="18" width="200" height="12" uuid="2128c6de-3c70-4a0b-999b-a29367ecb98b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SerealNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="288" y="0" width="78" height="18" uuid="301c97b9-39f1-4c41-a8c6-bab47973fb58"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Warranry}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="80" splitType="Stretch">
+			<textField>
+				<reportElement x="450" y="51" width="100" height="19" uuid="126c5f1c-1c76-41c2-adc1-73ab8d842686"/>
+				<textElement textAlignment="Right">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NettTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="10" width="100" height="19" uuid="11e557bf-39f2-4fd9-912d-44d48f974b11"/>
+				<textElement textAlignment="Right">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SubTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="29" width="100" height="20" uuid="16f93be1-9edf-4f99-b37d-150c9c5c374c"/>
+				<textElement textAlignment="Right">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Discount}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="450" y="49" width="100" height="1" uuid="006d187f-3141-49f3-9b03-d22fccf80704"/>
+			</line>
+			<line>
+				<reportElement x="450" y="70" width="100" height="1" uuid="ab0d8a58-e3f4-4a5f-9ef8-134d86f508e2"/>
+			</line>
+			<line>
+				<reportElement x="450" y="72" width="100" height="1" uuid="82b9ae17-f0ce-4041-9647-41cf6842ce17"/>
+			</line>
+			<staticText>
+				<reportElement x="370" y="12" width="80" height="15" uuid="800867c6-af82-4f0d-9a05-b8945d1d6b9c"/>
+				<textElement textAlignment="Left">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Sub Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="371" y="31" width="80" height="15" uuid="91abd854-b6d2-4dff-9257-c4ef07de8ffa"/>
+				<textElement textAlignment="Left">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Discount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="371" y="52" width="80" height="15" uuid="36156f4d-d501-4cd2-9514-35085efc8ef6"/>
+				<textElement textAlignment="Left">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Net Total]]></text>
+			</staticText>
+			<line>
+				<reportElement x="370" y="0" width="185" height="1" uuid="9af47803-1212-4edf-916c-bd4bdfbb9896"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="209" splitType="Stretch">
+			<staticText>
+				<reportElement x="17" y="4" width="520" height="86" uuid="8c332bc2-2bdb-4ae6-8950-1c9bbf011c98"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Note –
+Warranty covers only manufacture defects.
+Damage or defects to other causes such as negligence, misuse, improper operation, power fluctuation, lighting or other natural disaster, sabotage or accident items with burn mark, physical damage & corrosion are not included under this warranty.
+Submit invoice for warranty claim.
+Warranty one year less 14 working days.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="97" width="548" height="18" uuid="6c1bc6c2-2d39-48f3-bc53-bf3d5c0c514a"/>
+				<text><![CDATA[Goods received in good condition & correct quantity.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="3" y="3" width="550" height="1" uuid="e98af8ba-1f78-4b86-b58a-3e81343f3d4a"/>
+			</line>
+			<line>
+				<reportElement x="3" y="163" width="550" height="1" uuid="f47b5647-dbdd-46e4-a97d-88cd000e3409"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="169" width="544" height="18" uuid="9b58aa24-29c3-41f5-b2db-ae706cab0c78"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Thanks for your business]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="190" width="544" height="18" uuid="4bfe623f-e6a8-4fc4-b16e-f30e3b612312"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[POS System Powerd by Miracle Solutions - 0771981680]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="130" width="120" height="30" uuid="acdf0cbb-e54b-4c63-941a-bd39477c5382"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[………………………...
+Customer Signature]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="130" width="100" height="30" uuid="21b6e772-0217-4c28-aa5a-5a65d5ce891b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[………………………...
+Authorized by ]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="45" splitType="Stretch"/>
+	</summary>
+</jasperReport>

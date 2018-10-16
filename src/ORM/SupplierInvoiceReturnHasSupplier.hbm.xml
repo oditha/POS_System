@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 26, 2018 12:50:47 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.SupplierInvoiceReturnHasSupplier" table="SupplierInvoiceReturn_has_Supplier" catalog="jrtraders" optimistic-lock="version">
+        <id name="idRecord" type="java.lang.Integer">
+            <column name="IdRecord" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="supplier" class="ORM.Supplier" fetch="select">
+            <column name="idSupplier" not-null="true" />
+        </many-to-one>
+        <many-to-one name="supplierInvoiceReturn" class="ORM.SupplierInvoiceReturn" fetch="select">
+            <column name="idInvoiceReturn" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

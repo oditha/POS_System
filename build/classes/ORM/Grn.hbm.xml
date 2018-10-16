@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 26, 2018 12:50:47 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.Grn" table="GRN" catalog="jrtraders" optimistic-lock="version">
+        <id name="idGrn" type="java.lang.Integer">
+            <column name="idGRN" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="supplier" class="ORM.Supplier" fetch="select">
+            <column name="idSupplier" not-null="true" />
+        </many-to-one>
+        <property name="grnno" type="string">
+            <column name="GRNNO" length="45" />
+        </property>
+        <property name="grndate" type="string">
+            <column name="GRNDate" length="10" />
+        </property>
+        <property name="subTotal" type="java.lang.Double">
+            <column name="SubTotal" precision="22" scale="0" />
+        </property>
+        <property name="discount" type="java.lang.Double">
+            <column name="Discount" precision="22" scale="0" />
+        </property>
+        <property name="nettTotal" type="java.lang.Double">
+            <column name="NettTotal" precision="22" scale="0" />
+        </property>
+        <property name="isActive" type="string">
+            <column name="isActive" length="45" />
+        </property>
+        <property name="photo" type="string">
+            <column name="photo" />
+        </property>
+        <set name="grnitems" table="GRNItem" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idGRN" not-null="true" />
+            </key>
+            <one-to-many class="ORM.Grnitem" />
+        </set>
+        <set name="grnpaymentses" table="GRNPayments" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idGRN" not-null="true" />
+            </key>
+            <one-to-many class="ORM.Grnpayments" />
+        </set>
+        <set name="itemSereals" table="ItemSereal" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idGRN" not-null="true" />
+            </key>
+            <one-to-many class="ORM.ItemSereal" />
+        </set>
+    </class>
+</hibernate-mapping>

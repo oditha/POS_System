@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 26, 2018 12:50:47 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.InvoiceReturn" table="InvoiceReturn" catalog="jrtraders" optimistic-lock="version">
+        <id name="idInvoiceReturn" type="java.lang.Integer">
+            <column name="idInvoiceReturn" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="invoice" class="ORM.Invoice" fetch="select">
+            <column name="idInvoice" not-null="true" />
+        </many-to-one>
+        <many-to-one name="invoiceItem" class="ORM.InvoiceItem" fetch="select">
+            <column name="idInvoiceItem" not-null="true" />
+        </many-to-one>
+        <property name="retuenDate" type="string">
+            <column name="RetuenDate" length="45" />
+        </property>
+        <property name="returnQty" type="java.lang.Double">
+            <column name="ReturnQty" precision="22" scale="0" />
+        </property>
+        <property name="itemSerial" type="string">
+            <column name="ItemSerial" length="45" />
+        </property>
+        <property name="term" type="string">
+            <column name="Term" length="45" />
+        </property>
+        <property name="status" type="string">
+            <column name="status" length="45" />
+        </property>
+        <property name="isActive" type="string">
+            <column name="isActive" length="45" />
+        </property>
+        <property name="itemCondition" type="string">
+            <column name="ItemCondition" length="45" />
+        </property>
+        <set name="customersHasInvoiceReturns" table="Customers_has_InvoiceReturn" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInvoiceReturn" not-null="true" />
+            </key>
+            <one-to-many class="ORM.CustomersHasInvoiceReturn" />
+        </set>
+    </class>
+</hibernate-mapping>

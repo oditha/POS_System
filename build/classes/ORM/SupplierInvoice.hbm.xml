@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 26, 2018 12:50:47 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.SupplierInvoice" table="SupplierInvoice" catalog="jrtraders" optimistic-lock="version">
+        <id name="idInvoice" type="java.lang.Integer">
+            <column name="idInvoice" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="supplier" class="ORM.Supplier" fetch="select">
+            <column name="idSupplier" not-null="true" />
+        </many-to-one>
+        <property name="invoiceNo" type="string">
+            <column name="InvoiceNo" length="45" />
+        </property>
+        <property name="invoiceDate" type="string">
+            <column name="InvoiceDate" length="10" />
+        </property>
+        <property name="subTotal" type="java.lang.Double">
+            <column name="SubTotal" precision="22" scale="0" />
+        </property>
+        <property name="discount" type="java.lang.Double">
+            <column name="Discount" precision="22" scale="0" />
+        </property>
+        <property name="nettTotal" type="java.lang.Double">
+            <column name="NettTotal" precision="22" scale="0" />
+        </property>
+        <property name="isActive" type="string">
+            <column name="isActive" length="45" />
+        </property>
+        <property name="createdBy" type="string">
+            <column name="CreatedBy" length="45" />
+        </property>
+        <set name="supplierInvoiceItems" table="SupplierInvoiceItem" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInvoice" not-null="true" />
+            </key>
+            <one-to-many class="ORM.SupplierInvoiceItem" />
+        </set>
+        <set name="supplierInvoiceReturns" table="SupplierInvoiceReturn" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInvoice" not-null="true" />
+            </key>
+            <one-to-many class="ORM.SupplierInvoiceReturn" />
+        </set>
+        <set name="supplierInvoicePaymentses" table="SupplierInvoicePayments" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInvoice" not-null="true" />
+            </key>
+            <one-to-many class="ORM.SupplierInvoicePayments" />
+        </set>
+    </class>
+</hibernate-mapping>

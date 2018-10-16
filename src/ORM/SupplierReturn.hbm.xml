@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 26, 2018 12:50:47 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.SupplierReturn" table="SupplierReturn" catalog="jrtraders" optimistic-lock="version">
+        <id name="idSupplierReturn" type="java.lang.Integer">
+            <column name="idSupplierReturn" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="grnitem" class="ORM.Grnitem" fetch="select">
+            <column name="idGRNItem" not-null="true" />
+        </many-to-one>
+        <many-to-one name="supplier" class="ORM.Supplier" fetch="select">
+            <column name="idSupplier" not-null="true" />
+        </many-to-one>
+        <property name="retuenDate" type="string">
+            <column name="RetuenDate" length="10" />
+        </property>
+        <property name="returnQty" type="string">
+            <column name="ReturnQty" length="45" />
+        </property>
+        <property name="isActive" type="string">
+            <column name="isActive" length="45" />
+        </property>
+        <property name="term" type="string">
+            <column name="Term" length="45" />
+        </property>
+        <property name="description" type="string">
+            <column name="Description" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>
